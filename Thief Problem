@@ -16,16 +16,16 @@ Solution:
 We can use recursion to solve this problem:
   
 def choose(Weightlist, Valuelist, weight, item_num = [0]*5, all_value = 0, max_value = 0):	
-weight_left = weight
-	if weight_left <= Weightlist[0]:
-		return 0
-	else:
-		for i in [c for c in Weightlist if c <= weight_left]:
-			all_value = Valuelist[Weightlist.index(i)] + choose(Weightlist, Valuelist, weight - i, item_num)
-			item_num[Weightlist.index(i)] += 1
-			if all_value > max_value:
-				max_value = all_value
-	return max_value
+    weight_left = weight
+    if weight_left <= Weightlist[0]:
+        return 0
+    else:
+        for i in [c for c in Weightlist if c <= weight_left]:
+            all_value = Valuelist[Weightlist.index(i)] + choose(Weightlist, Valuelist, weight - i, item_num)
+            item_num[Weightlist.index(i)] += 1
+            if all_value > max_value:
+                 max_value = all_value
+    return max_value
 
 print(choose([2, 3, 4, 5, 9], [3, 4, 8, 8, 10], 20))
 print(choose([2, 3, 4, 5, 9], [3, 4, 8, 8, 10], 30))
